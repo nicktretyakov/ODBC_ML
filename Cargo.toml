@@ -1,0 +1,21 @@
+[package]
+name = "ml-odbc-driver"
+version = "0.3.1"
+edition = "2021"
+description = "ODBC driver that exposes ML model inference as relational tables"
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "ml_odbc_driver"
+crate-type = ["cdylib", "rlib"]
+
+# Zero external dependencies – works offline / with broken registries.
+[dependencies]
+
+[features]
+default = []
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
